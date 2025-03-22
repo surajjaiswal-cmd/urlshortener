@@ -50,11 +50,15 @@ const server = createServer(async (req, res) => {
     if (req.url === "/") {
       return serveFile(
         res,
-        path.join("urlshortener", "index.html"),
+        path.join("index.html"),
         "text/html"
       );
     } else if (req.url === "/style.css") {
-      return serveFile(res, path.join("urlshortener", "style.css"), "text/css");
+      return serveFile(
+        res,
+        path.join("style.css"),
+        "text/css"
+      );
     } else if (req.url === "/links") {
       const links = await loadLinks();
       res.writeHead(200, { "Content-Type": "application/json" });
